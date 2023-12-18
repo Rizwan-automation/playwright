@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "CucumberValidation": "npx cucumber-js --tags '@validation' --retry 1 --exit --format html:cucumber-report.html"
+    "CucumberValidation": "npx cucumber-js --tags '@validation' --retry 1 --exit --format html:cucumber-report.html",
+    "allure:generate":"allure generate my-allure-results -o allure-report --clean",
+    "allure:open":"allure open allure-report",
+    "test":"npx playwright test task3.spec.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.40.0",
-    "@types/node": "^20.10.0"
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.0",
+    "allure-playwright": "^2.9.2"
   },
   "dependencies": {
     "@cucumber/cucumber": "^10.0.1"

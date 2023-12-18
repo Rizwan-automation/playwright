@@ -1,6 +1,9 @@
 const { expect } = require("@playwright/test");
+const { webActions } = require("../utils/webActions");
 
 class LoginPage {
+
+
 
     constructor(page) {
         this.page = page;
@@ -9,6 +12,7 @@ class LoginPage {
         this.username = page.locator("input#user-name");
         this.password = page.locator("input#password");
         this.loginBtn = page.locator("input#login-button");
+        this.WebActions = new webActions(this.page);
     }
 
     async goTo(url, title) {
@@ -42,7 +46,8 @@ class LoginPage {
     async login(user, pass) {
         await this.username.fill(user);
         await this.password.fill(pass);
-        await this.loginBtn.click();
+        await this.WebActions.clickElement(this.loginBtn)
+        // await this.loginBtn.click();
     }
 
 }

@@ -14,7 +14,7 @@ module.exports = defineConfig({
   testDir: './tests',
   retries: 1,
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 10 * 1000,
   expect: {
     timeout: 5000
   },
@@ -29,7 +29,7 @@ module.exports = defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html'],
              ['list'],
-             ['junit',{outputFile:'results.xml'}],
+             ['junit',{outputFile:'results.xml', embedAnnotationsAsProperties: true}],
              ['json',{outputFile:'results.json'}],
              ['allure-playwright',{outputFolder :'my-allure-results'}]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -59,7 +59,7 @@ module.exports = defineConfig({
   //   {
   //     name: 'webkit',
   //     use: { ...devices['Desktop Safari'] },
-  //   },
+  //   }
 
     /* Test against mobile viewports. */
     // {

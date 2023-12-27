@@ -1,6 +1,8 @@
 const { default: test } = require("@playwright/test");
 const { POManagerTask3 } = require("../pages_task3/POManagerTask3");
 
+test.describe("Assignment",async()=>{
+
     test('Playwright Assignment Task3', async ({ page }) => {
         const poManager = new POManagerTask3(page);
         const loginPage = poManager.getLoginPage();
@@ -22,10 +24,10 @@ const { POManagerTask3 } = require("../pages_task3/POManagerTask3");
         const loginUser = await loginPage.getUser(user);
         const loginPassword = await loginPage.getPassword();
         await loginPage.login(loginUser, loginPassword);
-        await dashboardPage.verifyDashboardPage("Product");
+        await dashboardPage.verifyDashboardPage("Products");
 
         // Scenario - 2
-        await dashboardPage.selectFilter("lohi");
+        await dashboardPage.selectFilter("Price (low to high)");
         await dashboardPage.verifyPrices();
         const totalPrice = await dashboardPage.addItemsToCart(itemsCount);
         await dashboardPage.navigateToCartPage();
@@ -35,3 +37,4 @@ const { POManagerTask3 } = require("../pages_task3/POManagerTask3");
         await orderPreviewPage.verifyCountAndPrice(itemsCount, totalPrice);
 
     });
+});

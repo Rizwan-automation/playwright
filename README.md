@@ -14,3 +14,4 @@ trcli -y -h "https://rizwanvd.testrail.io/" -u "rizwan.iqbal@venturedive.com" -p
 To execute report run allue commands:
 npm run allure:generate
 npm run allure:open
+

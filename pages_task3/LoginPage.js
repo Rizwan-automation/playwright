@@ -1,14 +1,21 @@
 const { expect } = require("@playwright/test");
+const { webActions } = require("../utils/webActions");
 
 class LoginPage {
+
+
 
     constructor(page) {
         this.page = page;
         this.listOfUsers = page.locator("div#login_credentials");
         this.listOfPassword = page.locator("div.login_password");
-        this.username = page.locator("input#user-name");
-        this.password = page.locator("input#password");
-        this.loginBtn = page.locator("input#login-button");
+        // this.username = page.locator("input#user-name");
+        this.username = "input#user-name";
+        // this.password = page.locator("input#password");
+        this.password = "input#password";
+        // this.loginBtn = page.locator("input#login-button");
+        this.loginBtn = "input#login-button";
+        this.WebActions = new webActions(this.page);
     }
 
     async goTo(url, title) {
@@ -40,9 +47,12 @@ class LoginPage {
     }
 
     async login(user, pass) {
-        await this.username.fill(user);
-        await this.password.fill(pass);
-        await this.loginBtn.click();
+        await this.WebActions.enterText(this.username, user)
+        await this.WebActions.enterText(this.password, pass)
+        await this.WebActions.clickElement(this.loginBtn)
+        // await this.username.fill(user);
+        // await this.password.fill(pass);
+        // await this.loginBtn.click();
     }
 
 }

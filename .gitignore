@@ -3,3 +3,9 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/screenshots/
+/allure-report/
+/my-allure-results/
+results.json
+results.xml
+cucumber-report.html

@@ -1,24 +1,26 @@
 const {expect} = require("@playwright/test");
+const { webActions } = require("../utils/webActions");
 
 class CheckoutPage{
 
     constructor(page){
         this.page = page;
-        this.firstName = page.locator("input#first-name");
-        this.lastName = page.locator("input#last-name");
-        this.zipCode = page.locator("input#postal-code");
-        this.continueBtn = page.locator("input#continue");
+        this.firstName = "input#first-name";
+        this.lastName = "input#last-name";
+        this.zipCode = "input#postal-code";
+        this.continueBtn = "input#continue";
+        this.WebActions = new webActions(this.page);
     }
 
 async enterInfo(firstName,lastName,zipCode){
-    await this.firstName.fill(firstName);
-    await this.lastName.fill(lastName);
-    await this.zipCode.fill(zipCode);
+    await this.WebActions.enterText(this.firstName, firstName)
+    await this.WebActions.enterText(this.lastName, lastName)
+    await this.WebActions.enterText(this.zipCode, zipCode)
     }
 
 async navigateToOrderPreviewPage(){
-    await this.continueBtn.click();
-    }
+    await this.WebActions.clickElement(this.continueBtn)    
+}
 }
 
 module.exports = {CheckoutPage}
